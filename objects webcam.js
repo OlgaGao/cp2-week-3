@@ -19,10 +19,10 @@ let video;
 let flippedVideo;
 // To store the classification
 let label = "";
-var A1=0;
-var micescore=0;
-var plantsscore=0;
-var handscore=0;
+var A1 = 0;
+var micescore = 0;
+var plantsscore = 0;
+var handscore = 0;
 // Load the model first
 function preload() {
   classifier = ml5.imageClassifier(imageModelURL);
@@ -50,26 +50,41 @@ function draw() {
   textSize(16);
   textAlign(CENTER);
   text(label, width / 2, height - 4);
-  
-  if(label =="empty"){
-A1 =1;
+
+  if (label == "empty") {
+    A1 = 1;
   }
-  
-  if(A1==1&&label=="mice"){
+
+  if (A1 == 1 && label == "mice") {
     micescore++;
-   
-    A1=0;
+
+    A1 = 0;
   }
-  if(A1==1&&label=="plants"){
+  if (A1 == 1 && label == "plants") {
     plantsscore++;
-   
-  A1=0;
-}
-  if(A1==1&&label=="hand"){
-    handscore++;
-   
-  A1=0;
+
+    A1 = 0;
   }
+  if (A1 == 1 && label == "hand") {
+    handscore++;
+
+    A1 = 0;
+  }
+   fill(30,200,50);
+  text('micescore', 40, 15);
+  text(micescore, 40, 30);
+  
+
+  text('plantsscore', 165, 15);
+
+  text(plantsscore, 165, 30);
+  
+
+  text('handscore', 280, 15);
+  text(handscore, 280, 30);
+  fill(90, 240, 50);
+
+
 }
 
 // Get a prediction for the current video frame
